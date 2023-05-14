@@ -29,7 +29,7 @@ During the second stage the project was also lucky to receive a long-term fundin
 The SFG funding provides resources for hardware and software maintenance, ensuring longevity and high performance of the GNA online services.
 According to our experience, we estimate that users of name-finding GNA tools still missing about 25% of names due to abbreviation, false positives, non-conventional capitalization and other problems.
 Currently, we witness an Artificial Intelligence (AI) revolution: it provides methods and tools unthinkable just 10 years ago.
-This proposal aims to seize the opportunity of this unprecedented AI progress to dramatically enhance GNA tools, especially in the area of the scientific names' detection in literature closing the gap of making 25% of missing names available to researchers.
+This proposal aims to seize the opportunity of this unprecedented AI progress to dramatically enhance GNA tools, especially in the area of the scientific names'detection in literature closing the gap of making 25% of missing names available to researchers.
 
 We propose further developments in the following areas:
 
