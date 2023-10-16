@@ -17,43 +17,65 @@ output: pdf_document
 
 Biodiversity data is now unthinkable without binomial nomenclature.
 The nomenclature adopted almost 275 years ago by Carl Linnaeus provides one of the most long-lived and universally accepted identifiers in science.
-*Parsing*, *detecting* and *resolving* scientific names are crucial functionalities for scientific and government agencies, researchers, policymakers, if they deal with large-scale biodiversity data.
+*Parsing*, *detecting* and *resolving* scientific names are crucial functionalities for scientific and governmental agencies, researchers, policymakers, when they deal with large-scale biodiversity data.
 Global Names Architecture (GNA) [Ref] initiative was created in part to provide such functionalities, and had been offering the corresponding services since 2011.
 These GNA services and applications had been developed with the help of two NSF grants and went so far through two stages.
 The first stage funded by ABI Innovation [Ref] created a proof of concept, showing that scientific names' parsing, detecting and resolving can be implemented on a global scale.
 The resulting products had been rather slow but already usable.
 For example, Arctos [Ref] and Biodiversity Heritage Library (BHL) [Ref] based their name finding/name reconciliation on GNA.
 The second stage funded by ABI Development [Ref] concentrated on achieving production level in speed and quality of the GNA tools.
-As a test of new capabilities we cooperated with HathiTrust [Ref] consortium, ran name-finding algorithms against 6 billion pages of their corpus and were able to finish the job in 9 hours.
-During the second stage the project was also lucky to receive a long-term funding via Species File Group (SFG) [Ref] endowment.
+As a result, it became possible to index names appearing on all 60 million pages of Biodiversity Heritage Library (BHL) in only 12 hours on a laptop.
+To further test the limits of new capabilities we cooperated with HathiTrust [Ref] consortium, and ran name-finding algorithms against 6 billion pages of their corpus.
+We were able to finish the job in 9 hours.
+During the second stage GNA project was also lucky to receive a long-term funding via the Species File Group (SFG) [Ref] endowment.
 The SFG funding provides resources for hardware and software maintenance, ensuring longevity and high performance of the GNA online services.
-According to our experience, we estimate that users of name-finding GNA tools still missing about 25% of names due to abbreviation, false positives, non-conventional capitalization and other problems.
-Currently, we witness an Artificial Intelligence (AI) revolution: it provides methods and tools unthinkable just 10 years ago.
-This proposal aims to seize the opportunity of this unprecedented AI progress to dramatically enhance GNA tools, especially in the area of the scientific names'detection in literature closing the gap of making 25% of missing names available to researchers.
+However, we see ways to dramatically improve usefulness of the GNA tools, especially name discovery, and we solicit funding for these purposes.
+
+According to our experience, we estimate that users of name-finding still miss about 25% of names due to abbreviation, false positives, non-conventional capitalization and other problems.
+Many of these problems can be solved by traditional means, as well as by the fast-growing capabilities of the Artificial Intelligence approach.
+The Artificial Intelligence (AI) revolution provides methods and tools unthinkable just 10 years ago.
+This proposal aims to develop additional "conventional" algorithms as well as to seize the opportunity of this unprecedented AI progress to dramatically enhance GNA tools, especially in the area of the scientific names' detection in literature.
 
 We propose further developments in the following areas:
 
 1.1. Dramatically improve the quality of the scientific names' detection.
+
 Biodiversity Heritage Library (BHL) uses BHLindex [Ref] to create their index of scientific names.
 The index covers 60 million pages of text and consists of 12 million name-strings, 250 million of their occurrences.
 Using previous round of funding we were able to speed up the BHL index creation process more than 100-fold -- from 40 days on 4 high-end servers to 7 hours on a laptop.
-We discovered that about 25% of names, while partially detected, cannot be indexed correctly.
-The most significant subset of these are "abbreviated" names where genus is shortened to 1-3 letters (20% of all names).
+We discovered that about 25% of names, while detected, cannot be put into names index.
+There is also about 50 million name occurrences that are not detected due to OCR errors.
+
+1.1.1 Abbreviated names.
+
+About 20% of names in BHL are abbreviated; their genus is shortened to 1-3 letters.
+Such names cannot be easily reconciled and expanded to full genus and added
+to the names' index, because it would create significant amount of false positives.
 We want to develop algorithms which will use statistical and natural language processing approaches to expand abbreviations accurately and reliably.
 
-1.2. Elimination of most false positives.
-Quite significant number of generic names have the same spelling as 'normal' words, especially in text written in Latin, or languages derived from Latin.
+1.1.2. Elimination of most false positives.
+
+Quite significant number of generic names have the same spelling as 'normal' words, especially in text written in Latin, or Romanic languages.
 On one side, it creates false positives, with falsely detected names.
-On another side, trying to reduce the number of false positives, real names sometimes are removed.
-We plan to develop machine learning algorithms to mostly eliminate false positives.
-It will allow us to remove the "ambiguous words filters" and decrease the amount of false negatives.
+On the another side, trying to reduce the number of false positives, real names are sometimes removed.
+We plan to develop heuristic and machine learning algorithms to mostly eliminate false positives.
+It will allow us to remove the heuristic "ambiguous words filters" and decrease the amount of false negatives.
+
+1.1.3. Detection of names masked by OCR errors.
+
+OCR quality improved quite significantly recently, however, the quantity of OCR errors is still very high.
+By our estimations about 15% of names in BHL cannot be discovered by current algorithms as a result of these errors.
+Previous attempts to discover such names using n-gram analysis found 70 million names occurrences, however large percentage of these names are false positives.
+We plan to apply methods developed in section 1.1.2 to n-gram analysis results and near all such false positives.
+We also want to incorporate n-gram or similar approaches to name-finding, and use it for newly added, or re-OCRed manuscripts.
 
 1.3. Detection of vernacular names with high precision.
 Detection algorithms currently do not include vernacular names because they are even more ambiguous than scientific names, which generates more false positives.
-Using algorithms developed for 1.2., we will be able to remove false positives from vernacular names occurrences.
+Using algorithms developed for 1.1.2., we will be able to remove false positives from vernacular names occurrences.
 This will make it possible to have reliable indices of vernacular names and make services like BHL more accessible for laymen and citizen scientists.
 
 1.4. Customizable GNverifier data import.
+
 GNverifier tool compares an input of tentative scientific names with the data from hundreds of sources and uses multistage sophisticated algorithms to find suitable matches.
 Using the last round of funding we made an installation of most GNA products  on a local computer very approachable.
 However, installation and usage of GNverifier, a name reconciliation/resolution tool is more complex due to its large database containing names from more than 150 data-sources.
@@ -62,6 +84,7 @@ We want to create a standard automatic repository of data from hundreds of data-
 Such a repository will be an experimental hub for biodiversity data.
 
 1.5. A prototype of Global Name Index.
+
 Adding a "taxonomic intelligence" to names data is very beneficial.
 An information about a biological taxon often can be accessed not by one, but by multiple scientific names.
 We are developing a tool that allows to expand search from one name to all known nomenclatural synonyms of a taxon, find a name's original description, discover books about a particular higher taxon, classify texts by their taxonomic context.
@@ -161,7 +184,7 @@ All our code is released as Open Source under MIT public license.
 We continue to actively maintain Ruby applications, because they are still used in Ruby-based projects.
 These applications were published first time around 2008-2011 years.
 According to RubyGems site [Ref] most popular of them (damerau-levenshtein, biodiversity, gni, dwca-archive, taxamatch) had been downloaded 2.5 million times and received 216 GitHub "stars" (a "star" is a way for GitHub users to express a "like" of a project).
-As a control, our 
+As a control, our
 Applications written in Go are more recent and were published first between 2019-2021 years.
 There is no central repository similar to RubyGems for Go language, so we do not know how many times Go projects had been downloaded.
 These, second generation products, received 102 GitHub "stars" so far.
@@ -170,7 +193,7 @@ GlobalNames is envisioned as a part of biodiversity informatics infrastructure a
 So often projects developed in academia have a short life-span, and disappear due to a lack of funds.
 In 2015 Global Names projects described in this proposal received a stable monetary support from the SFG endowment providing equipment and a salary for one person.
 However, to make a leap in quality we would require additional resources.
-  
+
 In this proposal we want to address problems that are best suited for machine learning, artificial intelligence techniques. We plant to study the landscape of fast-evolving machine learning techniques and pick ones that are best for achieving our goal -- a very fast high quality scientific name detection, that rivals a human ability to do such a task.
 
 4. Challenges and Implementation
@@ -184,7 +207,7 @@ A "species taxon" is a circumscription of closely related organisms united by th
 For convenience researches assign a scientific name identifier to point to a particular taxon.
 
 There are often many scientific names historically assigned to the same taxon.
-They can be nomenclaturaly valid heterotypic or homotypic synonyms, names that were not validly published, etc. 
+They can be nomenclaturaly valid heterotypic or homotypic synonyms, names that were not validly published, etc.
 The same scientific name can be written in different ways as well.
 It can include authorship, year, contain abbreviations, different punctuation, misspellings.
 
@@ -219,7 +242,7 @@ This, in turn, allows to connect a specific taxon to the text.
 
 Current implementation of name-finding is written in Go language and can be compiled for a variety platforms [Ref].
 We provide it for MS Windows, Mac OS X and Linux.
-It can work with a large variety of documents, such as plain text, MS Word documents, MS Excel spreadsheets, PDFs, images in a variety formats. 
+It can work with a large variety of documents, such as plain text, MS Word documents, MS Excel spreadsheets, PDFs, images in a variety formats.
 After compilation, it is a 15 MB stand-alone binary, that is used without any additional external files or libraries.
 Document conversion and verification of scientific names requires an internet connection.
 
