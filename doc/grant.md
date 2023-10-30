@@ -101,7 +101,8 @@ This enhancement will improve accessibility for laymen and citizen scientists us
 Enhancing names data with "taxonomic intelligence" can be highly advantageous, as information about a biological taxon can be accessible through multiple scientific names (currently accepted taxon name and synonyms).
 We are in the process of developing a tool that exposes users to augmented name index.
 Such index broadens their search from one name to all known nomenclatural synonyms of a taxon, provides known links to original description text, uncovers the original description of a name, identify books about a specific higher taxon, and categorize texts based on their taxonomic context [Ref].
-We do hope, that introduction of specifically trained Large Language Models (LLM) will allow the tool to receive a massive usability gain.
+This tool would also use information about geographical entities and names of researches to integrate them with name occurences and generate enhanced metadata model.
+We also hope, that introduction of specifically trained Large Language Models (LLM) will allow the tool to receive a massive usability gain.
 
 Presently, this tool relies exclusively on data from BHL, but we aspire to expand it to encompass texts aggregated in HathiTrust [Ref], a massive repository of published literature.
 This expansion would extend "taxonomic intelligence" searches to several million books. The improvements outlined in sections 1.1, 1.2, and 1.3 will provide a solid foundation for this ambitious project.
